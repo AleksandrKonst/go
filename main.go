@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func firstTask() {
@@ -53,6 +54,52 @@ func thirdTask() {
 	fmt.Printf("It is %d hours %d minutes.\n", h, m)
 }
 
+func fourthTask() {
+	var num int
+	fmt.Print("Введите число: ")
+	fmt.Scan(&num)
+
+	result := squareDigits(num)
+	fmt.Printf("Результат: %s\n", result)
+}
+
+func squareDigits(num int) string {
+	numStr := strconv.Itoa(num)
+	var result string
+
+	for _, digit := range numStr {
+		n, _ := strconv.Atoi(string(digit))
+		squared := n * n
+		result += strconv.Itoa(squared)
+	}
+
+	return result
+}
+
+func fifthTask() {
+	var input string
+	fmt.Print("Введите строку: ")
+	fmt.Scan(&input)
+
+	result := insertAsterisks(input)
+	fmt.Printf("Результат: %s\n", result)
+}
+
+func insertAsterisks(s string) string {
+	if len(s) <= 1 {
+		return s
+	}
+
+	var result string
+	result = string(s[0])
+
+	for i := 1; i < len(s); i++ {
+		result += "*" + string(s[i])
+	}
+
+	return result
+}
+
 func main() {
-	thirdTask()
+	fourthTask()
 }
